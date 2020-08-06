@@ -272,7 +272,7 @@ Now you're ready to use Typescript / React / Sass inside your Symfony Project!
 Javascript and Typescript have their own way of checking syntaxic styles thanks to [eslint](https://eslint.org/) and [prettier](https://prettier.io/)
 They both have their advantages and we'll use both like here: https://medium.com/better-programming/eslint-vs-prettier-57882d0fec1d
 
-We will also use one of the famous configuration of eslint which is the [AirBnB](https://github.com/airbnb/javascript) one
+We will also use one of the famous configuration of eslint which is the [AirBnB](https://github.com/airbnb/javascript) one. It explains why each rules exists and how to enable/disable them.
 
 First of all add all the needed dependencies:
 
@@ -361,3 +361,5 @@ Then you can add two targets inside your `package.json`
 Now you can run them both to check or to fix all rules.
 
 Thanks to [Hugo Alliaume](https://github.com/Kocal) for the help to configure those tools.
+
+We won't use the [`.enableEslintLoader`](https://symfony.com/doc/current/frontend/encore/advanced-config.html#having-the-full-control-on-loaders-rules) from webpack-encore because there is no documentation at all.
