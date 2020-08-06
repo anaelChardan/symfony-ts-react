@@ -85,8 +85,7 @@ Before trying to use Typescript we're gonna do a simple React component.
 You may already know twig so let's install it along with Annotation routing
 
 ```shell script
-make composer F="require symfony/twig-pack"
-make composer F="require annotation"
+make composer F="require symfony/twig-pack annotation"
 ```
 
 Our Controller can look like that now
@@ -217,8 +216,7 @@ ReactDom.render(<App/>, document.getElementById('root'));
 Let's now transform the javascript onto typescript
 
 ```shell script
-make yarn F="add typescript ts-loader@^5.3.0 --dev"
-make yarn F="add @babel/preset-typescript@^7.0.0 --dev"
+make yarn F="add typescript ts-loader@^5.3.0 @babel/preset-typescript@^7.0.0 --dev"
 ```
 
 You can now add this block onto our `webpack.config.js`
@@ -263,6 +261,12 @@ Since it removes types we will need an extra command to check all our types.
 
 ```shell script
 make yarn F="run tsc --noEmit"
+```
+
+We can now add types for react
+
+```shell script
+make yarn F="add @types/react @types/react-dom --dev"
 ```
 
 Now you're ready to use Typescript / React / Sass inside your Symfony Project!
@@ -328,7 +332,7 @@ module.exports = {
                         js: 'never',
                         ts: 'never',
                         'd.ts': 'never',
-                        tsx: 'always',
+                        tsx: 'never',
                     },
                 ],
             },
@@ -360,6 +364,28 @@ Then you can add two targets inside your `package.json`
 
 Now you can run them both to check or to fix all rules.
 
+```shell script
+make yarn F="run lint"
+make yarn F="run lint-fix"
+```
+
 Thanks to [Hugo Alliaume](https://github.com/Kocal) for the help to configure those tools.
 
 We won't use the [`.enableEslintLoader`](https://symfony.com/doc/current/frontend/encore/advanced-config.html#having-the-full-control-on-loaders-rules) from webpack-encore because there is no documentation at all.
+
+## Forms 
+
+For form we'll use [Formik](https://formik.org/) which is now one of the standard in the react world.
+We'll use [Yup](https://github.com/jquense/yup) for validations.
+
+> We've used it a lot inside Lambert project and we feel like it is not that hard to understand and helped us managing well our API calls + validation.
+
+```shell script
+make yarn F="add formik yup"
+```
+
+### Our first Formik Form!
+
+We will do a simple form to submit an identity: firstName, lastName, title just to show you the principle.
+
+

@@ -43,7 +43,7 @@ module.exports = {
                         js: 'never',
                         ts: 'never',
                         'd.ts': 'never',
-                        tsx: 'always',
+                        tsx: 'never',
                     },
                 ],
             },
