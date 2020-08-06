@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome{% endblock %}</title>
+    {% block stylesheets %}
+        {% if pages is defined %}
+            {% for page in pages %}
+                {{ encore_entry_link_tags(page) }}
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
+</head>
+<body>
+<div id="root"></div>
+{% block javascripts %}
+    {% if pages is defined %}
+        {% for page in pages %}
+            {{ encore_entry_script_tags(page) }}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+</body>
+</html>
