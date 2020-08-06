@@ -1,23 +1,35 @@
 {
-    "devDependencies": {
-        "@babel/preset-react": "^7.0.0",
-        "@babel/preset-typescript": "^7.0.0",
-        "@symfony/webpack-encore": "^0.30.0",
-        "core-js": "^3.0.0",
-        "node-sass": "^4.14.1",
-        "regenerator-runtime": "^0.13.2",
-        "sass-loader": "^8.0.0",
-        "ts-loader": "^5.3.0",
-        "typescript": "^3.9.7",
-        "webpack-notifier": "^1.6.0"
-    },
     "license": "UNLICENSED",
     "private": true,
     "scripts": {
         "dev-server": "encore dev-server",
         "dev": "encore dev",
         "watch": "encore dev --watch",
-        "build": "encore production --progress"
+        "build": "encore production --progress",
+        "lint": "eslint assets/js/**/*.{js,ts,tsx,jsx}",
+        "lint-fix": "eslint assets/js/**/*.{js,ts,tsx,jsx} --fix"
+    },
+    "devDependencies": {
+        "@babel/preset-react": "^7.0.0",
+        "@babel/preset-typescript": "^7.0.0",
+        "@symfony/webpack-encore": "^0.30.0",
+        "@typescript-eslint/eslint-plugin": "^3.8.0",
+        "@typescript-eslint/parser": "^3.8.0",
+        "core-js": "^3.0.0",
+        "eslint": "^7.6.0",
+        "eslint-config-airbnb-base": "^14.2.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-import-resolver-webpack": "^0.12.2",
+        "eslint-plugin-import": "^2.22.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "eslint-plugin-react": "^7.20.5",
+        "node-sass": "^4.14.1",
+        "prettier": "^2.0.5",
+        "regenerator-runtime": "^0.13.2",
+        "sass-loader": "^8.0.0",
+        "ts-loader": "^5.3.0",
+        "typescript": "^3.9.7",
+        "webpack-notifier": "^1.6.0"
     },
     "dependencies": {
         "react": "^16.13.1",

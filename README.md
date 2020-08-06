@@ -267,3 +267,97 @@ make yarn F="run tsc --noEmit"
 
 Now you're ready to use Typescript / React / Sass inside your Symfony Project!
 
+## Code style
+
+Javascript and Typescript have their own way of checking syntaxic styles thanks to [eslint](https://eslint.org/) and [prettier](https://prettier.io/)
+They both have their advantages and we'll use both like here: https://medium.com/better-programming/eslint-vs-prettier-57882d0fec1d
+
+We will also use one of the famous configuration of eslint which is the [AirBnB](https://github.com/airbnb/javascript) one
+
+First of all add all the needed dependencies:
+
+```shell script
+make yarn F="add eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-config-airbnb-base eslint-import-resolver-webpack eslint-plugin-import eslint-plugin-prettier eslint-plugin-react prettier --dev"
+```
+
+Then an `.eslintrc.js` file
+
+```js
+module.exports = {
+    // parser: 'react-eslint-parser',
+    parserOptions: {
+        parser: '@typescript-eslint/parser',
+        project: './tsconfig.json',
+        extraFileExtensions: ['.tsx'],
+    },
+    extends: [
+        'airbnb-base',
+        'plugin:import/typescript',
+        'plugin:@typescript-eslint/eslint-recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:react/recommended',
+        'plugin:prettier/recommended',
+        'prettier/@typescript-eslint',
+        'prettier/react',
+    ],
+    settings: {
+        'import/resolver': ['node', 'webpack'],
+    },
+    rules: {
+        'import/prefer-default-export': 'off',
+        'import/extensions': [
+            'error',
+            'ignorePackages',
+            {
+                js: 'never',
+                ts: 'never',
+                'd.ts': 'never',
+                tsx: 'never',
+            },
+        ],
+    },
+    overrides: [
+        {
+            files: ['*.ts', '*.tsx'],
+            rules: {
+                'no-useless-constructor': 'off',
+                'import/extensions': [
+                    'error',
+                    'ignorePackages',
+                    {
+                        js: 'never',
+                        ts: 'never',
+                        'd.ts': 'never',
+                        tsx: 'always',
+                    },
+                ],
+            },
+        },
+    ],
+};
+```
+
+Then a `.prettierrc` file :
+
+```json
+{
+  "singleQuote": true,
+  "printWidth": 120,
+  "trailingComma": "es5"
+}
+```
+
+Then you can add two targets inside your `package.json`
+
+```json
+{
+    "scripts": {
+        "lint": "eslint assets/js/**/*.{js,ts,tsx,jsx}",
+        "lint-fix": "eslint assets/js/**/*.{js,ts,tsx,jsx} --fix"
+    }
+}
+```
+
+Now you can run them both to check or to fix all rules.
+
+Thanks to [Hugo Alliaume](https://github.com/Kocal) for the help to configure those tools.
