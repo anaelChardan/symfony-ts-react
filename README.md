@@ -6,7 +6,7 @@ Meaning [React](https://fr.reactjs.org/) + [Typescript](https://www.typescriptla
 
 React:
  - Component Oriented Javascript Framework, it can be used for SPA but also for classical website mounting any components in any page 
- - We already use it at Novactive (Check Melijoe or Lambert or Kpeyes), you can check the latest [video](https://www.youtube.com/watch?v=AQFy9OzuaS0) of [Sébastien](https://github.com/Plopix/plopix)
+ - We already use it at Novactive (Check Melijoe or Lambert or Kpeyes), you can check the latest video of [Sébastien](https://github.com/Plopix/plopix)
 
 Typescript:
  - Strongly Typed Language that we transpile onto Javascript
